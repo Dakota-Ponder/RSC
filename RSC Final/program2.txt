@@ -1,0 +1,92 @@
+JMP start
+
+; Program the performs various operations and uses all instructions 
+; program2.txt 
+
+
+
+
+; Variables to hold the values 
+value1: A9
+value2: 2B
+value3: AF
+value4: D1
+
+; Variables to hold the various result values 
+addresult: 0
+subresult: 0
+andresult: 0
+orresult: 0
+ashrresult: 0
+incresult: 0
+notresult: 0
+timestwo: 0
+
+start:
+; A9 + 2B = D4
+    LDAC value1			; load A9 into ACC
+    MVAC			; move A9 to R 
+    LDAC value2			; load 2B to ACC
+    ADD				; add A9 and 2B 
+    OUT				; move ACC to OUTR
+    STAC addresult		; store result in addresult 
+    
+;A9 - 2B = 7E
+    CLAC
+    LDAC value2
+    MVAC
+    LDAC value1
+    SUB
+    OUT
+    STAC subresult
+    
+; A9 AND 2B = 29
+    CLAC
+    LDAC value1
+    MVAC
+    LDAC value2
+    AND
+    OUT
+    STAC andresult
+    
+; A9 OR 2B = AB
+    CLAC
+    LDAC value1
+    MVAC
+    LDAC value2
+    OR
+    OUT
+    STAC orresult
+
+; 2B + 2B = 56
+    CLAC                        ; clear ACC
+    LDAC value2                   ; load 2B to ACC
+    MOVR                        ; move 2B to R
+    ADD                         ; add them together
+    OUT                         ; move ACC to OUTR
+    STAC timestwo               ; store result in timestwo
+
+    
+; ASHR A9 = 54
+    LDAC value1
+    MOVR
+    ASHR
+    OUT
+    STAC ashrresult
+    
+; AF + 1 = B0
+    CLAC
+    LDAC value3
+    INC
+    OUT
+    STAC incresult
+   
+; NOT D1 = FFFFFF2
+    CLAC
+    LDAC value4
+    NOT
+    OUT
+    STAC notresult
+    
+;stop the program
+    HALT

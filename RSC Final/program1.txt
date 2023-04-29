@@ -1,0 +1,13 @@
+JMP start
+
+; Variables
+var1: a
+var2: f
+
+start:       
+    LDAC var1    ; Load the first variable into Accumulator
+    MVAC         ; Move the contents of Accumulator to R
+    LDAC var2    ; Load the second variable into Accumulator
+    SUB          ; SUB Accumulator and R, move result into Accumulator
+    OUT          ; Outputs 5
+    HALT         ; Stop execution

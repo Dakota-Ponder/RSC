@@ -1,0 +1,34 @@
+JMP start
+
+; Variables to hold the Fibonacci sequence values
+fib0: 0
+fib1: 1
+fib2: 0
+fib3: 0
+fib4: 0
+
+start:
+; Calculate F(2) = F(1) + F(0)
+    LDAC fib1            ; load F(1) into ACC
+    MVAC                 ; move F(1) to R
+    LDAC fib0            ; load F(0) into ACC
+    ADD                  ; add F(1) and F(0)
+    STAC fib2            ; store F(2) in fib2
+
+; Calculate F(3) = F(2) + F(1)
+    LDAC fib2            ; load F(2) into ACC
+    MVAC                 ; move F(2) to R
+    LDAC fib1            ; load F(1) into ACC
+    ADD                  ; add F(2) and F(1)
+    STAC fib3            ; store F(3) in fib3
+
+; Calculate F(4) = F(3) + F(2)
+    LDAC fib3            ; load F(3) into ACC
+    MVAC                 ; move F(3) to R
+    LDAC fib2            ; load F(2) into ACC
+    ADD                  ; add F(3) and F(2)
+    OUT                  ; move ACC to OUTR
+    STAC fib4            ; store F(4) in fib4
+
+; Halt the program
+    HALT
